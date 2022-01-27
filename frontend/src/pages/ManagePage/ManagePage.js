@@ -1,13 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-
-function isObjEmpty(obj) {
-	for (var prop in obj) {
-	  if (obj.hasOwnProperty(prop)) return false;
-	}
-  
-	return true;
-}
+import isObjEmpty from '../../utils/isObjEmpty';
 
 class ManagePage extends React.Component {
 	constructor(props) {
@@ -20,7 +13,6 @@ class ManagePage extends React.Component {
 
 	componentDidMount() {
 		this.setState({ user: this.props.user })
-		console.log('componentDidMount() in ManagePage');
 		if (isObjEmpty(this.props.user)) {
 			this.setState({redirect: true});
 		} else {
@@ -29,11 +21,16 @@ class ManagePage extends React.Component {
 	}
 
 	render() {
-		console.log("render() in ManagePage");
 		if (this.state.redirect) {
 			return <Navigate to="/login" />
 		} else {
-			return <h1>Connect with { this.props.user.username } </h1>
+			return (
+				<>
+					<h1>Manage</h1>
+					<p>Username: {this.props.user.username}</p>
+					<p>UserID: {this.props.user._id}</p>
+				</>
+			)
 		}
 	}
 }

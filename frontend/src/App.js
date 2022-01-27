@@ -1,18 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import ManagePage from './pages/ManagePage/ManagePage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-
-function isObjEmpty(obj) {
-	for (var prop in obj) {
-	  if (obj.hasOwnProperty(prop)) return false;
-	}
-  
-	return true;
-}
+import isObjEmpty from './utils/isObjEmpty';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +20,6 @@ class App extends React.Component {
     const username = document.getElementById('username').value;
 		const body = await axios.post('http://localhost:8080/user/login', { username: username });
 		this.setState({ user: body.data });
-    console.log('user_login() in App');
   }
 
   render() {

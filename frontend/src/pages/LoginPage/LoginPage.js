@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 
@@ -13,11 +12,9 @@ class LoginPage extends React.Component {
 	handleSubmit = async () => {
 		this.props.userLoginFunc();
 		this.setState({redirect: true});
-		console.log("\n\nhandleSubmit() in LoginPage");
 	}
 
 	render() {
-		console.log("render() in LoginPage");
 		if (this.state.redirect) {
 			return <Navigate to='/manage' />
 		}
