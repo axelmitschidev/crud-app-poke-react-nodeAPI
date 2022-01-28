@@ -62,6 +62,15 @@ app.post('/delete/:userid/poke/:id', async (req, res) => {
 	res.send(user);
 })
 
+app.post('/update/:userid/poke/:id', async (req, res) => {
+	const user = await UserModel.findOne({ _id: req.params.userid });
+	const pokename = await req.body.pokename;
+	const index = user.bag.findIndex(poke => poke.poke_id == req.params.id);
+	user.bag[index].poke_name = pokename;
+	await user.save();
+	res.send(user);
+})
+
 app.listen(8080, () => {
 	console.log('Listen on http://localhost:8080');
 });

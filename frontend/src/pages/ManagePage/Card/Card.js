@@ -28,9 +28,9 @@ class Card extends React.Component{
 						<img src={ this.props.img } style={{width: '120px'}} alt=""/>
 						<div className="card-body d-flex justify-content-center flex-column">
 							<h5 className="card-title text-center h3">{ this.props.name }</h5>
-							<input type="text" placeholder="New name" className="m-2" />
+							<input id={'save'+this.props.pokeid} type="text" placeholder="New name" className="m-2" />
 							<div className="btn-group float-end">
-								<a onClick={this.save} className="btn btn-primary">Save</a>
+								<a onClick={() => {this.props.pokeChangeNameFunc(this.props.pokeid)}} className="btn btn-primary">Save</a>
 								<a className="btn btn-danger" onClick={this.cancel_updating}>Cancel</a>
 							</div>
 						</div>
