@@ -14,22 +14,18 @@ app.get('/users', async (req, res) => {
 });
 
 app.post('/user/create', async (req, res) => {
-	const user = new UserModel({
-		username: 'Axel',
-		bag: [
-			{
-				poke_name: 'Test1'
-			},
-			{
-				poke_name: 'Test2'
-			},
-			{
-				poke_name: 'Test3'
-			},
-		],
-	});
-	await user.save();
-	res.send('ok');
+	const username = await req.body.username;
+	const user = await UserModel.findOne({ username: username });
+	if (user === null && username !== '') {
+		const user = new UserModel({
+			username: username,
+			bag: [],
+		});
+		await user.save();
+		res.send('ok');
+	} else {
+		res.send('');
+	}
 });
 
 app.post('/user/login', async (req, res) => {
