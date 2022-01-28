@@ -22,18 +22,18 @@ class App extends React.Component {
 		this.setState({ user: body.data });
   }
 
-  render() {
-    if (!isObjEmpty(this.state.user)) {
-      return <ManagePage user={ this.state.user } />
-    }
+  reset_user = () => {
+    this.setState({user: {}});
+  }
 
+  render() {
     return (
       <Router>
         <Routes>
-          <Route path="/manage" element={ <ManagePage user={ this.state.user } /> }></Route>
-          <Route path="/login" element={ <LoginPage userLoginFunc={ this.user_login } /> }></Route>
+          <Route path="/manage" element={ <ManagePage user={ this.state.user } resetUserFunc={ this.reset_user }/> }></Route>
+          <Route path="/login" element={ <LoginPage userLoginFunc={ this.user_login } user={ this.state.user } /> }></Route>
           <Route path="/register" element={ <RegisterPage /> }></Route>
-          <Route path="*" element={ <LoginPage userLoginFunc={ this.user_login } /> }></Route>
+          <Route path="*" element={ <LoginPage userLoginFunc={ this.user_login }  user={ this.state.user } /> }></Route>
         </Routes>
       </Router>
     );

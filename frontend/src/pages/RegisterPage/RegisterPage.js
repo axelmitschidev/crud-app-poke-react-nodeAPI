@@ -25,6 +25,7 @@ class RegisterPage extends React.Component {
 			return <Navigate to='/login'/>
 		}
 		return (
+			<div className='d-flex justify-content-center align-items-center' style={{height: '100vh'}}>
 			<div className="border p-5 rounded shadow">
 				<h1 className="h3 mb-5 fw-normal">Register New User</h1>
 				<div className="form mb-5">
@@ -33,6 +34,7 @@ class RegisterPage extends React.Component {
 				</div>
 				<Link to='/login'>Already register ?</Link>
 				<button className="w-100 btn btn-lg btn-primary p-1" onClick={ this.handleSubmit }>Register</button>
+			</div>
 			</div>
 		)
 	}
