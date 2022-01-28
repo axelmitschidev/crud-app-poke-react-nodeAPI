@@ -40,7 +40,7 @@ class Card extends React.Component{
 		} else {
 			return (
 				<>
-					<div className="mb-5 mr-5 d-flex flex-column align-items-center shadow rounded border" style={{width: '18rem'}}>
+					<div className="d-flex flex-column align-items-center shadow rounded border m-1" style={{width: '18rem'}}>
 						<img src={ this.props.img } style={{width: '120px'}} alt=""/>
 						<div className="card-body">
 							<h5 className="card-title text-center h3">{ this.props.name }</h5>
